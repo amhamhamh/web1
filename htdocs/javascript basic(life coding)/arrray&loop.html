@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="kor">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="color.js"></script>
+</head>
+<body>
+    <h1>WEB</h1>
+    <ul>
+            <li><a href="https://terms.naver.com/entry.nhn?docId=841364&cid=42344&categoryId=42344"> web</a></li>
+            <li><a href="https://terms.naver.com/entry.nhn?docId=1168097&cid=40942&categoryId=32838">html</a></li>
+            <li><a href="https://terms.naver.com/entry.nhn?docId=1179641&cid=40942&categoryId=32854">css</a></li>
+   </ul>
+    <input type="button" value="night" onclick="
+        if (this.value === 'night') {
+        Body.setbackgroundColor('black');
+        Body.setcolor('white');       
+        this.value = 'day';      
+        Links.setColor('powderblue');
+        }       
+        else {
+        Body.setbackgroundColor('white');
+        Body.setcolor('black');       
+        this.value = 'night';    
+        Links.setColor('blue');
+        }      
+    ">    
+</body>
+</html>

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="kor">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- '=='와 '==='의 차이-->
+    <script>
+        if(1=='1'){        // ==는 안에 있는 값만 맞아도 진실 
+            alert(1);
+        }
+        if(1==='1'){        // ===는 엄격하게 내용과 속성까지 일치하여서. 
+            alert(1);               // 실행이 안 됨
+        }else{
+            alert('진실이 아님');   //  실행이 됨.
+        }
+
+    </script>
+
+    <!--'&&' and에 대한 설명-->
+    <script>// '&&'and 태크로 두 개가 참일 떄 실행 됨
+        if (true && true) {      // 실행
+            alert(1);
+        }
+        if (true && false) {     // 뒤에는 있는 거짓이라서 실행이 안 됨
+            alert(2);
+        }
+        if (false && true) {    // 앞에 있는 게 거짓이라서 실행이 안 됨
+            alert(3);
+        }
+        if (false && false) {   // 두 개다 거짓이라서 실행이 안 됨
+            alert(4);
+        }
+    </script>
+    
+    
+    <script>
+        id = prompt('아이디를 입력해주세요.');
+        password = prompt('비밀번호를 입력해주세요.');
+        if(id=='egoing' && password=='111111'){        // id 변수와 password 변수가 두 개다 참일 때. 실행이 됨.
+            alert('인증 했습니다.');
+        } else {
+            alert('인증에 실패 했습니다.');
+        }
+    </script>
+    
+    <!--'||' OR에 대한 설명 : 하나가 참일 때 실행이 가능-->
+    <script>// '||'는 OR 연산자로 두 가지 중에 하나만 참이면 실행이 가능함.
+        if (true || true) {  //  두 개다 참이라서 실행
+            alert(1);
+        }
+        if (true || false) {    //  앞에게 참이라서 실행
+            alert(2);
+        }
+        if (false || true) {    //  뒤에게 참이라서 실행
+            alert(3);
+        }
+        if (false || false) {   //  둘 다 거짓이라서 실행이 안 됨
+            alert(4);
+        }
+    </script>
+    
+    <!--'&&'연산자와 '||' 연산자의 설명-->
+    <script>
+        id = prompt('아이디를 입력해주세요.');
+        password = prompt('비밀번호를 입력해주세요.');
+        if ((id === 'egoing' || id === 'k8805' || id === 'sorialgi') && password === '111111') {   // ( )괄호 안의 연산자 들중에 하나가 참. 
+            alert('인증 했습니다.');                                                                //  뒤쪽의 패스워드도 참이면 '인증했습니다' 실행
+        } else {
+            alert('인증에 실패 했습니다.');
+        }
+    </script>
+    
+    <!--'!'은 not(부정)을 의미함-->
+    <script>
+        if (!true && !true) {    // 두 가지의 true를 부정하여 두 개다 거짓
+            alert(1);
+        }
+        if (!false && !true) {  // 앞에 진실, 뒤에 거짓으로 결과는 실행이 안 됨
+            alert(2);
+        }
+        if (!true && !false) {  // 앞에 거짓, 뒤에는 진실로 결과는 거짓 실행이 안 됨
+            alert(3);
+        }
+        if (!false && !false) { // 두 개다 거짓을 부정하여 참. 그래서 실행
+            alert(4);
+            }
+    </script>
+    <!--boolean의 대체제 연산자-->
+    <script>
+        if (0) {        // 0
+            alert(1)
+        }
+        if (1) {
+            alert(2)
+        }
+    </script>
+    <script>
+        if (!'') {                 // 빈문자열은 거짓. 그 거짓을 부정하여 진실 
+            alert('빈 문자열')      // 실행
+        }
+        if (!undefined) {           // undefined은 거짓. 그 거짓을 부정하여 진실
+            alert('undefined');     // 실행
+        }
+        
+        var a;                                  // 선언하지 않은 변수는 거짓
+        if (!a) {                               // 그 거짓을 부정하여서 진실
+            alert('값이 할당되지 않은 변수');     // 실행   
+        }
+        if (!null) {                            // null은 거짓으로 인식. 거짓을 부정하여 진실
+            alert('null');                      // 실행
+        }
+        if (!NaN) {                             // NaN이 거짓으로 인식. 거짓을 부정하여 진실   
+            alert('NaN');                       // 실행
+        }   
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="kor">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>array와 함수. 자체함수-method ex) members.length </h1>
+    <script>
+        function get_members() {
+            return ['egoing', 'k8805', 'sorialgi'];
+        }
+        var members = get_members();                    // get_members(); - get_members의 실행을 변수  members로 선언
+        
+        for (i = 0; i < members.length; i++) {          // i < members.length - members의 함수 길이 만큼 .
+        
+            document.write(members[i].toUpperCase());   // 변수 members 값을 toUpperCase. 즉 대문자로 변환하라
+            document.write('<br />');
+        }
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="kor">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!--복제-->
+    <script>
+        var a = 1;          // 원시 데이터 a값은 1
+        var b = a;          // 원시 데이터 b값에 a 값을 복사. 여기서 b 값은 1   
+        b = 2;
+        console.log(a); // 1 → a 값에 기존 데이터가 있기 때문에 1임.
+    </script>
+    <!--참조. 데이터 원형이면 실제 데이터 가 있고,
+    모든 객체는 참조형 데이터다-->
+    <script>
+        var a = { 'id': 1 };   // a는 객체 id 값을 참조함
+        var b = a;             // b 또한 a의 객체 id 값을 참조함 
+        b.id = 2;              // b 가 참조하는 객체 id 값을 2라고 선언 
+        console.log(a.id);  // 2 → a와 b가 둘다 참조하는 id 값을 바라봄
+    </script>
+    <!--함수와 참조-->
+    <script>
+        var a = 1;                      // a = 1 - 원시 데이터
+        function func(b) {              // b = a - 원시 데이터
+            b = 2;                      // b = 2    
+        }
+        func(a);                       // func(a) a인자를 위의 함수 b 값에 대입했음(여기서 a의 원시데이터 1를 복사함)
+        console.log(a);                // 값은 1 
+    </script>
+    <!--함수 참조. 데이터 원형이면 실제 데이터 가 있고,
+    객체라면 참조하는 방법이 있다-->
+    <script>
+        var a = { 'id': 1 };        // a 값은 객체를 가짐
+        function func(b) {          // b=a
+            b.id = 2;               // 여기서 b도 참조하는 객체에 프라퍼티 id 값을 할당함. 
+        }
+        func(a);                    // a인자를 위의 함수 매개변수에 대입
+        console.log(a.id);  // 2    → 그렇기 이 값으로 나옴. 
+    </script>
+    <!--함수와 참조-->
+    <script>
+        var a = { 'id': 1 };         // a는 id 객체를 가짐   
+        function func(b) {
+            b = { 'id': 2 };        // b 또한 id 객체를 가짐    
+        }
+        func(a);                    // 서로 다른 객체를 가짐. 각자 정의 되었기에 완전 다른 존재. 
+        console.log(a.id);  // 1 → 그래서 기존의 a 객체를 가짐
+    </script>
+
+</body>
+
+</html>

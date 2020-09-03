@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="kor">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!--객체의 원형-->
+    <script>
+        function Ultra() { }                    // Ultra 함수
+        Ultra.prototype.ultraProp = true;       // Ultra(객체).prototype(프라퍼티).ultraProp(프라퍼티) = true ;
+
+        function Super() { }                    // Super 함수
+        Super.prototype = new Ultra();          // Super.prototype(프라퍼티) = new Ultra();   ← 생성자(Ultra 상속받음)
+
+        function Sub() { }                      // Sub 함수    
+        Sub.prototype = new Super();            // Sub.prototype(프라퍼티) = new Super(); ← 생성자(Super상속받음)
+
+        var o = new Sub();                      // 변수 o는 생성자 new Sub를 받음
+        console.log(o.ultraProp);
+        // 변수 o.ultraProp를 console 실행. 20line → 16 line  → 14 line에서 찾아서, 값은 true.
+    </script>
+    <!--protype의 순환(1)- 값은 true-->
+    <script>
+        function Ultra() { }
+        Ultra.prototype.ultraProp = true;
+
+        function Super() { }
+        Super.prototype = new Ultra();
+
+        function Sub() { }
+        Sub.prototype = new Super();
+        Sub.prototype.ultraProp = true;       // 36줄로 이동한 console.log는  ultraProp를 찾았으니, 값은 true;
+
+        var o = new Sub();                    // 변수 o는 생성자 Sub();  
+        console.log(o.ultraProp);             // 39줄 → 36줄로 이동
+    </script>
+    <!--protype의 순환(2)- 값은 true-->
+    <script>
+        function Ultra() { }
+        Ultra.prototype.ultraProp = true;
+
+        function Super() { }
+        var t = new Ultra();                // 변수 t는 생성자 Ultra를 받음. 46줄→ 44줄. 결국 값은 true
+        Super.prototype = t;
+
+        function Sub() { }
+        Sub.prototype = new Super();
+
+
+        var o = new Sub();
+        console.log(o.ultraProp);             
+    </script>
+    <!--protype의 순환(3)- 값은 true-->
+    <script>
+        function Ultra() { }
+        Ultra.prototype.ultraProp = true;
+
+        function Super() { }
+        var t = new Ultra();               
+        t.ultraProp = 4;                   // 72줄 → 65줄 → 63줄 → 64줄      
+        Super.prototype = t;
+
+        function Sub() { }
+        Sub.prototype = new Super();
+
+
+        var o = new Sub();
+        console.log(o.ultraProp);             
+    </script>
+</body>
+
+</html>

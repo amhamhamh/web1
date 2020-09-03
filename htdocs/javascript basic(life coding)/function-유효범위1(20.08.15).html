@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>전역변수, 지역변수-유효범위</h1>
+    <script>
+        var vsscope = 'global';   // 전역변수
+        function fscope() {
+            var vsscope = 'local'  // 지역변수
+            alert(vsscope);
+        }
+        fscope();  // 함수는 제일 가까운 지역 변수를 결과 값으로 도출. alert 명령으로 'local'를 출력
+    </script>
+    <script>
+        var vsscope = 'global';   // 전역변수
+        function fscope() {
+            var vsscope = 'local'  // 지역변수를 선언. 
+            vsscope = 'local'      // var를 빼고, 다시 기존의 지역변수를 재할당
+        }
+        fscope();          // fscope의 지역 변수 local임. 아무 명령도 안함.
+        alert(vsscope);  // vsscope변수를 다시 불러내면, 지역변수 안에서 아무것도 없었기에, 밖에 있는 그냥 전역변수(global)를 불러냄
+    </script>
+    <script>
+        var vsscope = 'global';   // 전역변수
+        function fscope() {
+            vsscope = 'local' 
+            alert(vsscope);      // 지역변수 없이 var를 빼고 할당을 한다는 것은 전역변수를 재할당 한다는 의미
+        }
+        fscope();               // fscope함수는 전역변수로 선언된 local를 불러냄
+        alert(vsscope);         // local로 할당된 전역변수  gloobal값을 불러냄
+    </script>
+</body>
+
+</html>

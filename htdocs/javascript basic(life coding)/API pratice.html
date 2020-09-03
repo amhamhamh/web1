@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="kor">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+    <h1>내사이트임 ㅎㅇ</h1>
+    <script>
+        $.ajax({
+        method: "GET",
+        url: "https://search.daum.net/search?w=bookpage&bookId=1467038&q=%EB%AF%B8%EC%9B%80%EB%B0%9B%EC%9D%84+%EC%9A%A9%EA%B8%B0",
+        data: { title: "미움받을 용기"                                 
+                },
+        Headers : {Authorization : 'KakaoAK 5629ba1585cdc951dfb2922d05f9d9f4'}
+
+      })
+        .done(function( msg ) {
+          alert( "Data Saved: " + msg );
+        });
+    </script>
+</body>
+</html>

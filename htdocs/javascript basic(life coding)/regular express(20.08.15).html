@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+    <ul>
+        <li>같은 배열식</li>
+        <script>
+            var pattern = /a/;
+            document.write(pattern);    
+        </script>
+        <br>
+        <script>
+            var pattern = new RegExp('a');
+            document.write(pattern);
+        </script>
+        <li>1. exec메소드. 괄호 안의 문자열 찾기</li>
+        <script>
+            cons1ole.log(pattern.exec('abcdef')); // ['a']
+            console.log(pattern.exec('bcdefg')); // null
+        </script>
+        <li>test메소드. 괄호안의 문자가 존재하는 여부 확인</li>
+        <script>
+            console.log(pattern.test('abcdef')); // true
+            console.log(pattern.test('bcdefg')); // false
+        </script>
+        <li>match메소드는 exec메소와 같이 추출 메소드</li>
+        <script>
+            console.log('abcdef'.match(pattern)); // ["a"]
+            console.log('bcdefg'.match(pattern)); // null
+        </script>
+        <li>문자열에서 패턴 검색 후. 변경된 값으로 리턴</li>
+        <script>
+            console.log('abcdef'.replace(pattern, 'A'));  // Abcdef
+        </script>
+        <li>i를 넣으면 대문자와 소문자 상관없이 실행</li>
+        <script>
+            var xi = /a/;
+            console.log("Abcde".match(xi)); // null 
+            var oi = /a/i;
+            console.log("Abcde".match(oi)); // ["A"];
+        </script>
+        <li>g를 넣으면 검색된 모든 결과가 리턴된다.</li>
+        <script>
+            var xg = /a/;
+            console.log("abcdea".match(xg));
+            var og = /a/g;
+            console.log("abcdea".match(og)); 
+        </script>
+        <li>캡쳐기능</li>
+        <script>
+            var pattern = /(\w+)\s(\w+)/;
+            //  //의 안의 정규식은 (\w+)와 \띄어쓰기 (\w+) 두 그룹으로 나뉨. (\w+)는 string 형태로. '+' 즉. 계속 증가하는 형태를 가짐
+            var str = "coding everybody";  // coding everybody는 str로 변수를 다시 가짐
+            var result = str.replace(pattern, "$2, $1");
+            // result라는 변수는 str.replace(메소드)(pattern(변수). $2, $1 달러 표시로 두 그룹의 순서를 바꿈.
+            console.log(result);  // 실행.
+        </script>
+        <li>치환기능</li>
+        <script>
+            var urlPattern = /\b(?:https?):\/\/[a-z0-9-+&@#\/%?=~_|!:,.;]*/gim;
+            var content = '생활코딩 : http://opentutorials.org/course/1 입니다. 네이버 : http://naver.com 입니다. ';
+            var result = content.replace(urlPattern, function (url) {
+                return '<a href="' + url + '">' + url + '</a>';
+            });
+            console.log(result);
+            //꽤나 어려운 기능이라서 다시 찾아봐야 됨.
+        </script>
+
+    </ul>
+
+
+
+</body>
+
+</html>

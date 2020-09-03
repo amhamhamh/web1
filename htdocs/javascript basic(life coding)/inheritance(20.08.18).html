@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="kor">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!--상속-->
+    <script>
+        //모든 함수는 객체다.
+        function Person(name) {                      // person이라는 함수.
+            this.name = name;                       // 문맥에 따라 객체에 속해있는 person이라는 함수.
+        }
+        Person.prototype.name = null;                   //person.prototype(프라퍼티).name(프라퍼티) = null
+        Person.prototype.introduce = function () {      //person.prototype(프라퍼티).introduce(메소드) = null    
+            return 'My name is ' + this.name;
+        }
+
+        function Programmer(name) {                     // programmer 함수는 안의 객체를 불러냄
+            this.name = name;
+        }
+        Programmer.prototype = new Person();            // programmer(객체).prototype(원형) = new person이라는 생성자를 만듬
+
+        var p1 = new Programmer('egoing');              // 변수 pi는 생성자 programmer('egoing')값을 넣음
+        document.write(p1.introduce() + "<br />");      // p1.introduce(프라퍼티)는 윗줄의 new person의 기능을 받음. 
+                                                        // person.prototype 안의 introduce(메소드) 를 실행시킴. 결과 값은 My name is egoing
+    </script>
+    <!--상속의 기능추가-->
+    <script>
+        function Person(name) {                     
+            this.name = name;
+        }
+        Person.prototype.name = null;
+        Person.prototype.introduce = function () {
+            return 'My name is ' + this.name;
+        }
+
+        function Programmer(name) {
+            this.name = name;
+        }
+        Programmer.prototype = new Person();
+        Programmer.prototype.coding = function () {         // Programmer.prototype.coding(메소드)
+            return "hello world";
+        }       
+
+        var p1 = new Programmer('egoing');                  // p1 값은 programmer라고 정의함
+        document.write(p1.introduce() + "<br />");
+        // p1.introduce(프라퍼티)는 44번줄의 생성자의 상속을 받아서, 값은 My name is fuction이라고 받음
+        document.write(p1.coding() + "<br />");
+        // p1.coding(프라퍼티)는 41번을 만나서, 값은 'hello world'를 출력함.
+    </script>
+</body>
+
+</html>

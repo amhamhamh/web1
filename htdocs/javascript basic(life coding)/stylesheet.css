@@ -1,0 +1,37 @@
+#h1{
+  text-align: center;
+  font-size: 40px;
+border-bottom:  20px;
+text-decoration: underline solid gray;
+}
+a{
+  color : powderblue;
+  font-weight: bold;
+}
+
+#grid ol{
+align-content: center;
+padding-left: 50px; padding-right: 30px;
+font-size: 25px;
+}
+#chart{
+width: 500px;
+align-content: center;
+}
+iframe{
+  padding-left: 30px;
+  text-align: left;
+  margin: 0px;
+  border: 0px;
+}
+#article{
+  padding-left: 30px;
+}
+@media(min-width:900px){
+  #grid{
+    display: grid;
+    grid-template-columns: 150px 2fr;
+  }
+  #grid ol{
+  border-right: 8px solid gray;
+}

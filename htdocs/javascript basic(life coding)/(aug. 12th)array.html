@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="kor">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>array 함수의 배열</h1>
+    <script>
+        function get_members() {                            
+            return ['egoing', 'k8805', 'sorialgi'];         // return 할 수 있는 값이 배열임.
+        }
+        var members = get_members();                        // members라는 변수는 get_members의 함수 호출과 같음
+        document.write(members[0]+'<br>');                  // get_members 함수의 return 값의 '0'번째의 값을 적음
+        document.write(members[1]+'<br>');                  // get_members 함수의 return 값의 '1'번째의 값을 적음
+        document.write(members[2]+'<br>');                  // get_members 함수의 return 값의 '2'번째의 값을 적음
+    </script>
+
+</body>
+
+</html>

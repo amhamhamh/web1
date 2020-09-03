@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>지역변수의 선언</h1>
+    <script>
+        function a() {
+            var i = 0;                  // 지역변수 i로 선언
+        }
+        for (var i = 0; i < 5; i++) {
+            a();                        // a 함수 실행. 지역 변수 i=0에서 실행되고 벗어남.
+            document.write(i);          // for 문의 i 값이 계속 실행되어. 01234를 출력
+        }
+    </script>
+    <h2>전역변수의 실행- 무한 반복 실행</h2>
+    <!--
+    <script>
+        function a() {                  
+            i = 0;                      //전역변수로서의 i = 0값.
+        }
+        for (i = 0; i < 5; i++) {       // 여기서도 for문의 i 값은 어떠한 변수로 할당이 안 됨. 자바스크립트 안에서는 함수 안의 변수만. 지역변수                                                            
+            a();                        // i값은 계속 0이 되어서, 무한 반복을 하게 된다. 
+            document.write(i);
+        }
+    </script>
+    -->
+    <h3>전역변수를 객체화</h3>
+    <script>
+        MYAPP = {}                      // 전역변수 할당
+        MYAPP.calculator = {           // MYAPP(property).calculator(메소드) = 안에 속성으로  left, right 값 선언
+            'left': null,
+            'right': null
+        }
+        MYAPP.coordinate = {          // MYAPP(property).coordinate(메소드) = 안에 속성으로  left, right 값 선언 
+            'left': null,
+            'right': null
+        }
+
+        MYAPP.calculator.left = 10;     //MYAPP.calculator.left로 다시 선언
+        MYAPP.calculator.right = 20;    //MYAPP.calculator.right로 접근 하여 선언
+        function sum() {
+            return MYAPP.calculator.left + MYAPP.calculator.right;     // 안의 리턴 값은 위의 두 가지 프라퍼티 선언 2개 값을 더한 것으로 나옴
+        }
+        document.write(sum());                                          // 써줌
+    </script>
+    <h4>전역 변수를 사용하고 싶지 않다면</h4>
+    <script>
+        (function () {
+            var MYAPP = {}           // 지역변수로 선언이 됨.
+            MYAPP.calculator = {
+                'left': null,
+                'right': null
+            }
+            MYAPP.coordinate = {
+                'left': null,
+                'right': null
+            }
+            MYAPP.calculator.left = 10;
+            MYAPP.calculator.right = 20;
+            function sum() {
+                return MYAPP.calculator.left + MYAPP.calculator.right;
+            }
+            document.write(sum());
+        }()) // 익명함수로 선언함으로서 MYAPP은 전역변수가 안 됨. 익명함수 자체를 () 감싸는 것을 권장
+    </script>
+    <h5>지역 변수 </h5>
+    <script>
+        for (var i = 0; i < 1; i++) {
+            // 여기에서 for문은 ()는 지역변수가 아님. 전역변수. 왜냐 하면 자바스크립트는 함수 안에서의 변수 일때만, 지역변수
+            var name = 'coding everybody';
+        }
+        alert(name);
+    </script>
+    <h6>정적 범위 함수-lexical 함수(정의 할때 말하는 변수)</h6>
+    <script>
+        var i = 5;              // 전역변수
+        function a() {              
+            var i = 10;         //'a'함수의 지역변수 선언 i 값은 10.
+            b();                // b함수를 실행
+        }
+        function b() {
+            document.write(i);  
+            // i값을 써라는 함수. 여기서 b 함수내의 지역변수가 없기 때문에 전역변수인 i=5값을 이용함.
+        }
+        a();
+    </script>
+    <ul>
+      <li>var이라는 변수는 같은 이름으로 여러번 선언이 가능</li>
+      <li>let은 변수 이름 한번만 선언 가능하며, 재할당 가능</li>
+      <li>const는 변수 재선언, 변수 재할당이 불가능.</li>
+    </ul>
+</body>
+
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="kor">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!--object의 확장-->
+    <script>
+        Object.prototype.contain = function (neddle) {          // contain 메소드는 function 안의 needle 매개변수와 같는지 확인
+            for (var name in this) {                            // this(여기 객체 안에서) 변수 값을 for문으로 하나씩 실행
+                if (this[name] === neddle) {                    // 인자를 대입한 매개변수(neddle)값이 this[name] 객체의 키 값이 일치하다면
+                    return true;                                // 값은 true    
+                }
+            }
+            return false;
+        }
+        var o = { 'name': 'egoing', 'city': 'seoul' }
+        console.log(o.contain('egoing'));
+        var a = ['egoing', 'leezche', 'grapittie'];
+        console.log(a.contain('leezche'));
+    </script>
+    <!--object의 함정-->
+    <script>
+        Object.prototype.contain = function (neddle) {          // contain 메소드는 function 안의 needle 매개변수와 같는지 확인
+            for (var name in this) {                            // this(여기 객체 안에서) 변수 값을 for문으로 하나씩 실행
+                if (this[name] === neddle) {                    // 인자를 대입한 매개변수(neddle)값이 this[name] 객체의 키 값이 일치하다면
+                    return true;                                // 값은 true    
+                }
+            }
+            return false;
+        }
+        var o = { 'name': 'egoing', 'city': 'seoul' }
+        var a = ['egoing', 'leezche', 'grapittie'];
+        for (var name in o) {                                     // 변수 O 안의 모든 객체를 실행 시켜버림(부모객체까지 포함. contain)까지 나옴.    
+            console.log(name);                                  // o값의 name 인자를 38줄로 대입하면
+        }
+    </script>
+    <!--objec 확장의 수정(범위를 줄여줌으로써, 오류 값을 줄여냄)-->
+    <script>
+        Object.prototype.contain = function (neddle) {          // contain은 부모까지 상속 받음. 
+            for (var name in this) {
+                if (this[name] === neddle) {
+                    return true;
+                }
+            }
+            return false;
+        }
+        var o = { 'name': 'egoing', 'city': 'seoul' }
+        var a = ['egoing', 'leezche', 'grapittie'];
+        for (var name in o) {
+            if (o.hasOwnProperty(name)) {                       // hasownproperty(name-매개변수)
+                // 해당 객체내에 선언된 프라퍼티가 가지고 있는지 true or false 값으로 출력
+                console.log(name);                          // 아래의 값이 실행
+            }
+        }
+    </script>
+</body>
+
+</html>

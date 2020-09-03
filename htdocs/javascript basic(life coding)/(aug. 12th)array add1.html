@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="kor">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>array 인자(element) 추가</h1>
+    <script>
+        var li = ['a', 'b', 'c', 'd', 'e'];
+        li.push('f');                           //  'push'라는 메소드를 이용하여 'f' 하나만 추가
+        document.write(li);
+    </script>
+    <h2>array 인자(element) 2가지 추가 </h2>
+    <script>
+        var li = ['a', 'b', 'c', 'd', 'e'];
+        var li = li.concat(['f', 'g']);             
+        /* li 라는 배열에 'concat'. 
+        즉, 2가지 이상 추가할 수 있는 메소드를 활용하여 2개 인자를 추가 및 li 변수로 다시 선언*/
+        document.write(li);       
+    </script>
+    
+    <h3>인자 맨 앞에 배열하기</h3>
+    <script>
+        var li = ['a', 'b', 'c', 'd', 'e'];
+        li.unshift('z');             
+        /* li 라는 배열에 'unshift'. 
+        즉,배열 젤 앞으로 추가할 수 있는 메소드를 활용하여 인자 추가 및 li 변수로 다시 선언*/
+        document.write(li);       
+    </script>
+    
+    <h4>원소의 숫자만큼 삭제 후 추가</h4>
+    <script>
+        var li = ['a', 'b', 'c', 'd', 'e'];
+        li.splice(2,1,'B');             
+        /* li 라는 배열에 
+        2번째 자리에 있는 값부터 '0' 값 만큼 삭제하고 'B'를 삽입*/
+        document.write(li);       
+    </script>
+    
+
+</body>
+
+</html>

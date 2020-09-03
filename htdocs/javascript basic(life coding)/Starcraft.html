@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="kor">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+    <img id ="battlecruiser" src="battlecruiser.jpg" alt="battlecruiser">
+    <img id ="cloaking" src="cloaking.jpg" alt="cloaking">
+    <script>
+        $(document).ready(function(){
+          $("#cloaking").click(function(){
+            $("#battlecruiser").fadeToggle();
+             });
+        });
+        </script>
+</body>
+</html>

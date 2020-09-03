@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="kor">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>내부함수, 외부함수(디버거로 살펴볼 것)</h1>
+    <!--내부함수는 외부함수가 실행이 끝났을 경우에도 외부함수의 지역변수의 사용이 가능하다-->
+    <script>
+        function outter() {
+            function inner() {
+                var title = 'coding everybody';     // inner 함수의 지역 변수는 coding everybody  // 2번 실행
+                alert(title);                       // 경고창에 inner의 지역 변수를 띄워라         // 3번 실행 
+            }
+            inner();                                // inner 함수를 실행                         // 4번 실행   
+        }
+        outter();                                  // outter 함수를 실행. 첫번째 실행     
+    </script>
+    <SCRipt>
+        function outter() {                         
+            var title = 'coding everybody';         // 지역변수는 'coding everybody' // 2번 실행
+            function inner() {                      
+                alert(title);                       // title은 외부함수의 지역변수를 받아서 실행 // 3번 실행
+            }
+            inner();                                
+        }
+        outter();                                 // outter 함수를 실행. 첫번째 실행       
+    </SCRipt>
+    <h2>내부함수, 외부함수2</h2>
+    <script>
+        function outter() {
+            var title = 'coding everybody';     // outter의 지역함수     
+            return function () {                // return 값으로 내부 함수 실행
+                alert(title);                   // 내부 함수의 경고창으로 title이 외부함수의 지역 변수를 받아서 실행
+            }
+        }
+        inner = outter();                       //inner는 outer 함수랑 같음. // 1번 실행
+        inner();                                //2번 실행
+    </script>
+    <h3>내부함수, 외부함수3</h3>
+    <script>
+        function factory_movie(title) {             
+            return {
+                get_title: function () {
+                    return title;
+                },
+                set_title: function (_title) {              //  매개변수 _title은 공각 기동대(6번실행)
+                    title = _title                          //  title(공각기동대)=_title은 공각 기동대(7번 실행)
+                }
+            }
+        }
+        ghost = factory_movie('Ghost in the shell');      //  ghost라는 factory_movie에 ghost in the shell을 지정(1 번실행)
+        matrix = factory_movie('Matrix');                 //  matrix라는 factory_movie에 Matrtix을 지정 (2 번실행)
+
+        alert(ghost.get_title());                        // ghost(객체).get_title(메소드) - 결과 값은   ghost in the shell  (3 번실행)
+        alert(matrix.get_title());                       // matrix(객체).get_title(메소드) - 결과 값은   Matrix(4 번실행)
+
+        ghost.set_title('공각기동대');                    //ghost(객체).set_title(메소드) (5번 실행) 재 할당  
+
+        alert(ghost.get_title());                       // ghost.객체의 get_title을 실행. 7번 실행을 받아서 ' 공각기동대' 실행(8번 실행)
+        alert(matrix.get_title());                      // matrix.객체의 get_title을 실행. 기존에 할당 받은 matrix를 실행
+    </script>
+    <h4>내부함수, 외부함수4</h4>
+    <script>
+        var arr = []                                   // arr변수는 배열    
+        for (var i = 0; i < 5; i++) {                  // for 안의 것은 전역변수 
+            arr[i] = function (id) {                  // arr[i] 값은 함수의 매개변수 id 값임.(외부함수)
+                return function () {                  // return 값으로 fucntion을 실행. 
+                    return id;                        // return 값은 id 값.  
+                }
+            }(i);                                     // 익명함수 i값을 매개변수로 실행. (0,1,2,3,4)  
+        }
+        for (var index in arr) {                     // 변수 arr 5값의 변수 지수를 index로 측정
+            console.log(arr[index]());               // arr의 변수를 index 배열로 console 창에 실행. 
+        }
+    </script>
+
+</body>
+
+</html>
